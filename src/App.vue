@@ -1,19 +1,18 @@
 <template>
-  <div>
-    <Login msg="Hello" />
-    <div>안녕!</div>
-    <div>현재 카운트 : {{ count }}</div>
-    <button @click="increment">+</button>
-  </div>
+  <Header />
+  <Login msg="Hello" />
+  <div>안녕!</div>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 import Login from "./components/Login.vue";
 
 export default {
   name: "App",
   components: {
     Login,
+    Header,
   },
   methods: {
     increment() {
