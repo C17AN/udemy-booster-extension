@@ -1,10 +1,13 @@
 <template>
-  <header>헤더 컴포넌트</header>
-  <div>dd</div>
+  <header>헤더</header>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style></style>
+<style>
+header {
+  background-color: var(--skyblue-100);
+}
+</style>

@@ -1,7 +1,8 @@
 <template>
-  <Header />
-  <Login msg="Hello" />
-  <div>안녕!</div>
+  <div class="container">
+    <Header />
+    <Login msg="Hello" />
+  </div>
 </template>
 
 <script>
@@ -27,4 +28,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.container {
+  width: 400px;
+  height: 450px;
+}
+</style>
