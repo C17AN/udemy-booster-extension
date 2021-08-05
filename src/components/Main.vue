@@ -5,6 +5,9 @@
       <li @click="toLectureManage" :class="{ selectedMenu: currentPage === 'lectureManage' }">
         강의 관리
       </li>
+      <li @click="toLectureManage" :class="{ selectedMenu: currentPage === 'lectureManage' }">
+        스케줄러
+      </li>
     </ul>
     <div v-if="currentPage === 'myPage'">
       <Dashboard />
