@@ -19,7 +19,7 @@
       <p class="language">
         <span class="lang-en">English</span> / <span class="lang-ko">한글</span>
       </p>
-      <button class="check-id-btn">아이디 확인</button>
+      <button class="check-id-btn" @click="verify">아이디 확인</button>
     </div>
   </div>
   <Footer />
@@ -34,6 +34,11 @@ export default {
   name: "Login",
   props: {
     msg: String,
+  },
+  methods: {
+    verify() {
+      this.$store.commit("verifyApiKey");
+    },
   },
 };
 </script>

@@ -10,7 +10,7 @@ const store = createStore({
   state() {
     return {
       count: 0,
-      verified: true,
+      verified: false,
     };
   },
   mutations: {
@@ -19,6 +19,9 @@ const store = createStore({
     },
     change(state, value) {
       state.count = value;
+    },
+    verifyApiKey(state) {
+      state.verified = true;
     },
   },
   actions: {
