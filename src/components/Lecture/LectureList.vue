@@ -1,7 +1,12 @@
 <template>
-  <ul class="container">
-    <LectureItem v-for="lecture in lectureList" :key="lecture.id" :name="lecture.name" />
-  </ul>
+  <div v-if="lectureList.length > 0">
+    <ul class="container">
+      <LectureItem v-for="lecture in lectureList" :key="lecture.id" :name="lecture.name" />
+    </ul>
+  </div>
+  <div v-else>
+    <p>이런, 아직 강의 목록이 비어있네요!</p>
+  </div>
 </template>
 
 <script>
@@ -58,8 +63,7 @@ export default {
   },
   created() {
     localStorage.setItem("lectureList", JSON.stringify(data));
-    this.lectureList = JSON.parse(localStorage.getItem("lectureList")).lectures;
-    console.log(this.lectureList);
+    // this.lectureList = JSON.parse(localStorage.getItem("lectureList")).lectures;
   },
 };
 </script>

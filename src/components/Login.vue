@@ -8,11 +8,11 @@
     <div class="input-container">
       <div class="login-input">
         <label for="clientId">발급받은 클라이언트 아이디를 입력해 주세요.</label>
-        <input id="clientId" type="text" />
+        <input id="clientId" type="text" @input="saveId" />
       </div>
       <div class="login-input">
         <label for="clientPw">발급받은 비밀 키를 입력해 주세요.</label>
-        <input id="clientPw" type="password" />
+        <input id="clientPw" type="password" @input="saveSecret" />
       </div>
     </div>
     <div class="bottom-container">
@@ -27,17 +27,35 @@
 
 <script>
 import Footer from "./Footer.vue";
+import base64 from "base-64";
+
 export default {
   components: {
     Footer,
   },
   name: "Login",
-  props: {
-    msg: String,
+  data() {
+    return {
+      clientId: "",
+      clientSecret: "",
+    };
   },
   methods: {
     verify() {
       this.$store.commit("verifyApiKey");
+    },
+    saveId(e) {
+      this.clientId = e.target.value;
+      localStorage.setItem("clientId", this.clientId);
+    },
+    saveSecret(e) {
+      this.clientSecret = e.target.value;
+      localStorage.setItem("clientSecret", this.clientSecret);
+    },
+  },
+  computed: {
+    basicBase64() {
+      return base64.encode(`${this.clientId}:${this.clientSecret}`);
     },
   },
 };

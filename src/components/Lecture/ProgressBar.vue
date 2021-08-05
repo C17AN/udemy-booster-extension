@@ -1,5 +1,5 @@
 <template>
-  <div class="total-progress"></div>
+  <div class="total-progress">0%</div>
 </template>
 
 <script>
@@ -8,9 +8,14 @@ export default {};
 
 <style scoped>
 .total-progress {
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #cdcdcd;
   border-radius: 8px;
-  height: 20px;
+  text-align: center;
   margin: 12px 0 16px 0;
 }
 </style>

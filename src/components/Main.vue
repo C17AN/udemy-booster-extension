@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <ul class="menu">
-      <li @click="toMyPage">마이페이지</li>
-      <li @click="toLectureManage">강의 관리</li>
+      <li @click="toMyPage" :class="{ selectedMenu: currentPage === 'myPage' }">요약</li>
+      <li @click="toLectureManage" :class="{ selectedMenu: currentPage === 'lectureManage' }">
+        강의 관리
+      </li>
     </ul>
     <div v-if="currentPage === 'myPage'">
       <Dashboard />
@@ -57,6 +59,9 @@ export default {
   }
   li:hover {
     transition: 0.15s ease all;
+    color: var(--skyblue-300);
+  }
+  .selectedMenu {
     color: var(--skyblue-300);
   }
 }

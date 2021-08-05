@@ -2,7 +2,6 @@
   <div class="dashboard-container">
     <h1>전체 강의 진행률</h1>
     <ProgressBar />
-    <h3>강의 목록</h3>
   </div>
 </template>
 
