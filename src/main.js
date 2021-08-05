@@ -11,17 +11,18 @@ const store = createStore({
     return {
       count: 0,
       verified: false,
+      currentPage: "myPage",
     };
   },
   mutations: {
-    increase(state) {
-      state.count++;
-    },
-    change(state, value) {
-      state.count = value;
-    },
     verifyApiKey(state) {
       state.verified = true;
+    },
+    toMyPage(state) {
+      state.currentPage = "myPage";
+    },
+    toLectureManage(state) {
+      state.currentPage = "lectureManage";
     },
   },
   actions: {

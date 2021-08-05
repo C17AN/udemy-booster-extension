@@ -1,20 +1,40 @@
 <template>
   <div class="container">
     <ul class="menu">
-      <li>마이페이지</li>
-      <li>강의 추가</li>
+      <li @click="toMyPage">마이페이지</li>
+      <li @click="toLectureManage">강의 관리</li>
     </ul>
-    <div>
+    <div v-if="currentPage === 'myPage'">
       <Dashboard />
+    </div>
+    <div v-else>
+      <LectureManage />
     </div>
   </div>
 </template>
 
 <script>
 import Dashboard from "./Dashboard.vue";
+import LectureManage from "./Lecture/LectureManage.vue";
+
 export default {
   components: {
     Dashboard,
+    LectureManage,
+  },
+
+  computed: {
+    currentPage() {
+      return this.$store.state.currentPage;
+    },
+  },
+  methods: {
+    toMyPage() {
+      this.$store.commit("toMyPage");
+    },
+    toLectureManage() {
+      this.$store.commit("toLectureManage");
+    },
   },
 };
 </script>

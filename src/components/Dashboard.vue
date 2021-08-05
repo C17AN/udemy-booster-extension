@@ -3,16 +3,13 @@
     <h1>전체 강의 진행률</h1>
     <ProgressBar />
     <h3>강의 목록</h3>
-    <LectureList />
   </div>
 </template>
 
 <script>
-import LectureList from "./Lecture/LectureList.vue";
 import ProgressBar from "./Lecture/ProgressBar.vue";
 export default {
   components: {
-    LectureList,
     ProgressBar,
   },
 };
