@@ -1,14 +1,20 @@
 <template>
   <header>
     <div class="header-content">
-      <font-awesome-icon icon="cog" />
+      <font-awesome-icon icon="cog" @click="openSettingMenu" />
       <div class="setting"></div>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    openSettingMenu() {
+      this.$store.commit("openSettingMenu");
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

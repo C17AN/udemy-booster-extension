@@ -1,21 +1,47 @@
 <template>
-  <div class="total-progress">0%</div>
+  <div class="progress-container">
+    <!-- <div class="progress"></div> -->
+    <ve-progress
+      :progress="50"
+      line="butt"
+      size="180"
+      :thickness="15"
+      empty-thickness="8%"
+      fontSize="24px"
+      dot="18 white"
+    />
+  </div>
 </template>
 
 <script>
-export default {};
+import { VeProgress } from "vue-ellipse-progress";
+export default {
+  components: {
+    VeProgress,
+  },
+};
 </script>
 
 <style scoped>
-.total-progress {
+.progress-container {
   display: flex;
   justify-content: center;
+  overflow: hidden;
   align-items: center;
-  padding: 8px;
   font-size: 14px;
-  border: 1px solid #cdcdcd;
-  border-radius: 8px;
   text-align: center;
   margin: 12px 0 16px 0;
+}
+.progress {
+  width: 80%;
+  height: 24px;
+  background-color: var(--skyblue-300);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.progress:hover {
+  background-color: var(--skyblue-100);
+  transition: all 0.2s ease;
 }
 </style>

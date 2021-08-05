@@ -5,15 +5,18 @@
       <li @click="toLectureManage" :class="{ selectedMenu: currentPage === 'lectureManage' }">
         강의 관리
       </li>
-      <li @click="toLectureManage" :class="{ selectedMenu: currentPage === 'lectureManage' }">
+      <li @click="toScheduler" :class="{ selectedMenu: currentPage === 'scheduler' }">
         스케줄러
       </li>
     </ul>
     <div v-if="currentPage === 'myPage'">
       <Dashboard />
     </div>
-    <div v-else>
+    <div v-else-if="currentPage === 'lectureManage'">
       <LectureManage />
+    </div>
+    <div v-else-if="currentPage === 'scheduler'">
+      <Scheduler />
     </div>
   </div>
 </template>
@@ -21,11 +24,13 @@
 <script>
 import Dashboard from "./Dashboard.vue";
 import LectureManage from "./Lecture/LectureManage.vue";
+import Scheduler from "./Scheduler.vue";
 
 export default {
   components: {
     Dashboard,
     LectureManage,
+    Scheduler,
   },
 
   computed: {
@@ -39,6 +44,9 @@ export default {
     },
     toLectureManage() {
       this.$store.commit("toLectureManage");
+    },
+    toScheduler() {
+      this.$store.commit("toScheduler");
     },
   },
 };

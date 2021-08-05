@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.24rem;
   font-weight: 500;
 }
 </style>

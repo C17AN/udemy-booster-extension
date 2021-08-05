@@ -1,7 +1,14 @@
-<template> </template>
+<template>
+  <Calendar is-expanded />
+</template>
 
 <script>
-export default {};
+import { Calendar } from "v-calendar";
+export default {
+  components: {
+    Calendar,
+  },
+};
 </script>
 
 <style></style>

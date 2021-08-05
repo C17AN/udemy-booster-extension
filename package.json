@@ -12,12 +12,16 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^3.0.0-4",
     "@mdi/font": "5.9.55",
+    "@popperjs/core": "^2.9.3",
+    "axios": "^0.21.1",
     "base-64": "^1.0.0",
     "core-js": "^3.6.5",
     "node-sass": "^6.0.1",
     "roboto-fontface": "*",
     "sass-loader": "10",
+    "v-calendar": "^3.0.0-alpha.5",
     "vue": "^3.0.0",
+    "vue-ellipse-progress": "^2.0.0",
     "vuex": "4.0.2"
   },
   "devDependencies": {

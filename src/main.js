@@ -12,6 +12,7 @@ const store = createStore({
       count: 0,
       verified: false,
       currentPage: "myPage",
+      settingMenuOpened: false,
     };
   },
   mutations: {
@@ -23,6 +24,15 @@ const store = createStore({
     },
     toLectureManage(state) {
       state.currentPage = "lectureManage";
+    },
+    toScheduler(state) {
+      state.currentPage = "scheduler";
+    },
+    openSettingMenu(state) {
+      state.settingMenuOpened = true;
+    },
+    closeSettingMenu(state) {
+      state.settingMenuOpened = false;
     },
   },
   actions: {
