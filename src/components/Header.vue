@@ -1,5 +1,5 @@
 <template>
-  <header>헤더</header>
+  <header></header>
 </template>
 
 <script>
@@ -8,6 +8,7 @@ export default {};
 
 <style>
 header {
-  background-color: var(--skyblue-100);
+  background-color: var(--skyblue-200);
+  height: 30px;
 }
 </style>

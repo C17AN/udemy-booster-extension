@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap");
+@import "./reset.css";
 
 * {
   box-sizing: border-box;
@@ -9,10 +10,16 @@
 :root {
   --white: #ffffff;
   --skyblue-100: #dceff5;
-  --skyblue-200: #b3e3f2;
-  --skyblue-300: #6fbad1;
-  --skyblue-400: #4c93a8;
+  --skyblue-200: #b3ccf2;
+  --skyblue-300: #81a5d4;
+  --skyblue-400: #769ac9;
   --skyblue-500: #5c8cbf;
+
+  --gray-100: #cdcdcd;
+  --gray-200: #cfcfcf;
+  --gray-300: #a3a3a3;
+  --gray-400: #8d8d8d;
+  --gray-500: #616161;
 }
 
 body,
