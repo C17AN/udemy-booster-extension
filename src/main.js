@@ -21,7 +21,13 @@ const store = createStore({
       state.count = value;
     },
   },
-  actions: {},
+  actions: {
+    increaseAction(context) {
+      setTimeout(() => {
+        context.commit("increase");
+      }, 1000);
+    },
+  },
 });
 
 library.add(faUserSecret);

@@ -1,24 +1,21 @@
-# udemy-tracker
+# 유데미 부스터 익스텐션 (WIP)
 
-## Project setup
-```
-yarn install
-```
+- 강의를 사놓고 듣지 않는다고요?
+- 강의를 들을 때 동기부여가 필요하다고요?
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+걱정 마세요! 이젠 유데미 부스터가 함께합니다!
 
-### Compiles and minifies for production
-```
-yarn build
-```
+<img src=  "https://user-images.githubusercontent.com/26535030/128328971-2ab1b3af-d36c-4fb0-9427-ec5c960f248a.png" width = "380" height = "450"/>
 
-### Lints and fixes files
-```
-yarn lint
-```
+---
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 😁 개발동기
+
+- 가격이 저렴한 유데미 특성 상, 강의를 너무 여유롭게 듣는 듯 함
+- 어떻게 하면 강의를 보도록 유도할 수 있을까?
+- 이번 기회에 Vue.js 연습도 해보자 -\_\_-
+
+## 🤖 주요 기능
+
+- 사용자의 강의 수강률 진행상황 표시
+- **강의 가격대비 강의 완료율에 따라 얼마나 값어치를 했는지 시각화**

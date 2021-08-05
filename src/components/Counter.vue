@@ -1,6 +1,6 @@
 <template>
   <div>{{ count }}</div>
-  <button @click="increase">+</button>
+  <button @click="asyncIncrease">+</button>
   <input @input="change" />
 </template>
 
@@ -17,6 +17,9 @@ export default {
     },
     change(e) {
       this.$store.commit("change", e.target.value);
+    },
+    asyncIncrease() {
+      this.$store.dispatch("increaseAction");
     },
   },
 };
