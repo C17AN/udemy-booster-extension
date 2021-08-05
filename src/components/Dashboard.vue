@@ -1,17 +1,24 @@
 <template>
   <div class="dashboard-container">
     <h1>전체 강의 진행률</h1>
-    <h3>부가 정보</h3>
+    <ProgressBar />
+    <h3>강의 목록</h3>
+    <LectureList />
   </div>
 </template>
 
 <script>
-export default {};
+import LectureList from "./Lecture/LectureList.vue";
+import ProgressBar from "./Lecture/ProgressBar.vue";
+export default {
+  components: {
+    LectureList,
+    ProgressBar,
+  },
+};
 </script>
 
 <style scoped>
-.dashboard-container {
-}
 h1 {
   font-size: 1.5rem;
   font-weight: 500;

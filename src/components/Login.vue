@@ -129,6 +129,7 @@ export default {
 
 .check-id-btn:hover {
   transition: all 0.15s ease-in;
+  color: #efefef;
   background-color: var(--skyblue-400);
 }
 </style>

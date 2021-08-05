@@ -1,0 +1,16 @@
+{
+  "lectures": [
+    {
+      "id": "1",
+      "name": "Vue.js"
+    },
+    {
+      "id": "2",
+      "name": "React.js"
+    },
+    {
+      "id": "3",
+      "name": "Typescript"
+    }
+  ]
+}
