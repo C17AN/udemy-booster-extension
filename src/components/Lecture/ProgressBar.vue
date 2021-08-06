@@ -3,7 +3,7 @@
     <!-- <div class="progress"></div> -->
     <ve-progress
       :progress="50"
-      line="butt"
+      line="round"
       size="180"
       :thickness="15"
       empty-thickness="8%"

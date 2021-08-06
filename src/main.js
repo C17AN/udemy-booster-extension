@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createStore } from "vuex";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUserSecret, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faUserSecret, faCog, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import App from "./App.vue";
 import "./style.css";
@@ -44,7 +44,7 @@ const store = createStore({
   },
 });
 
-library.add(faUserSecret, faCog);
+library.add(faUserSecret, faCog, faQuestionCircle);
 
 const app = createApp(App).component("font-awesome-icon", FontAwesomeIcon);
 

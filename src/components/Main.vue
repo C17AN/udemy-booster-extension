@@ -9,14 +9,16 @@
         스케줄러
       </li>
     </ul>
-    <div v-if="currentPage === 'myPage'">
-      <Dashboard />
-    </div>
-    <div v-else-if="currentPage === 'lectureManage'">
-      <LectureManage />
-    </div>
-    <div v-else-if="currentPage === 'scheduler'">
-      <Scheduler />
+    <div class="main-view">
+      <div v-if="currentPage === 'myPage'">
+        <Dashboard />
+      </div>
+      <div v-else-if="currentPage === 'lectureManage'">
+        <LectureManage />
+      </div>
+      <div v-else-if="currentPage === 'scheduler'">
+        <Scheduler />
+      </div>
     </div>
   </div>
 </template>
@@ -56,15 +58,18 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 20px 24px 20px;
 }
 
 .menu {
   display: flex;
+  height: 32px;
   margin: 20px 0 24px 0;
+  padding: 0 20px 0 20px;
+  border-bottom: 1px solid #cdcdcd;
+
   li {
     font-size: 14px;
-    margin: 0 8px;
+    margin: 0 10px;
     cursor: pointer;
     transition: 0.15s ease all;
   }
@@ -74,6 +79,12 @@ export default {
   }
   .selectedMenu {
     color: var(--skyblue-300);
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--skyblue-400);
   }
+}
+
+.main-view {
+  padding: 0 20px 12px 20px;
 }
 </style>
