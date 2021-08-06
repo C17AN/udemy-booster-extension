@@ -4,7 +4,7 @@
     <ve-progress
       :progress="50"
       line="round"
-      size="180"
+      size="160"
       :thickness="15"
       empty-thickness="8%"
       fontSize="24px"

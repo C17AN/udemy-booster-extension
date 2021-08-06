@@ -63,7 +63,7 @@ export default {
 .menu {
   display: flex;
   height: 32px;
-  margin: 20px 0 24px 0;
+  margin: 20px 0 24px -8px;
   padding: 0 20px 0 20px;
   border-bottom: 1px solid #cdcdcd;
 
