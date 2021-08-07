@@ -28,6 +28,8 @@
 <script>
 import Footer from "./Footer.vue";
 import base64 from "base-64";
+// import endPoint from "../constant/endpoint";
+import { verifyTarget } from "../constant/endpoint";
 
 export default {
   components: {
@@ -38,10 +40,22 @@ export default {
     return {
       clientId: "",
       clientSecret: "",
+      encodedSecret: "",
     };
   },
   methods: {
-    verify() {
+    verify: async function() {
+      const urlProxy = `/courses/${verifyTarget}`;
+      const res = await fetch(urlProxy, {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${this.encodedSecret}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(res.ok, data);
       this.$store.commit("verifyApiKey");
     },
     saveId(e) {
@@ -53,6 +67,11 @@ export default {
       localStorage.setItem("clientSecret", this.clientSecret);
     },
   },
+  created() {
+    this.clientId = localStorage.getItem("clientId");
+    this.clientSecret = localStorage.getItem("clientSecret");
+    this.encodedSecret = base64.encode(`${this.clientId}:${this.clientSecret}`);
+  },
   computed: {
     basicBase64() {
       return base64.encode(`${this.clientId}:${this.clientSecret}`);
@@ -61,7 +80,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .container {
   display: flex;
