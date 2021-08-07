@@ -22,6 +22,9 @@ const store = createStore({
     toMyPage(state) {
       state.currentPage = "myPage";
     },
+    toSearchLecture(state) {
+      state.currentPage = "searchLecture";
+    },
     toLectureManage(state) {
       state.currentPage = "lectureManage";
     },

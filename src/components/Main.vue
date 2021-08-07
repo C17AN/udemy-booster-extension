@@ -2,6 +2,9 @@
   <div class="container">
     <ul class="menu">
       <li @click="toMyPage" :class="{ selectedMenu: currentPage === 'myPage' }">요약</li>
+      <li @click="toSearchLecture" :class="{ selectedMenu: currentPage === 'searchLecture' }">
+        강의 추가
+      </li>
       <li @click="toLectureManage" :class="{ selectedMenu: currentPage === 'lectureManage' }">
         강의 관리
       </li>
@@ -12,6 +15,9 @@
     <div class="main-view">
       <div v-if="currentPage === 'myPage'">
         <Dashboard />
+      </div>
+      <div v-else-if="currentPage === 'searchLecture'">
+        <SearchLecture />
       </div>
       <div v-else-if="currentPage === 'lectureManage'">
         <LectureManage />
@@ -25,12 +31,14 @@
 
 <script>
 import Dashboard from "./Dashboard.vue";
+import SearchLecture from "./Lecture/SearchLecture.vue";
 import LectureManage from "./Lecture/LectureManage.vue";
 import Scheduler from "./Scheduler.vue";
 
 export default {
   components: {
     Dashboard,
+    SearchLecture,
     LectureManage,
     Scheduler,
   },
@@ -43,6 +51,9 @@ export default {
   methods: {
     toMyPage() {
       this.$store.commit("toMyPage");
+    },
+    toSearchLecture() {
+      this.$store.commit("toSearchLecture");
     },
     toLectureManage() {
       this.$store.commit("toLectureManage");
