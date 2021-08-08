@@ -27,6 +27,7 @@ export default {
       query: "",
       clientId: localStorage.getItem("clientId") || "",
       clientSecret: localStorage.getItem("clientSecret") || "",
+      searchResults: [],
     };
   },
   methods: {
@@ -42,7 +43,7 @@ export default {
         },
       });
       const data = await res.json();
-      console.log(this.encodedSecret);
+      this.searchResults = [...this.searchResults, results];
       console.log(data);
     },
   },

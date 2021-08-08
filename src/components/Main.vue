@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Dashboard from "./Dashboard.vue";
+import Dashboard from "./Summary/Dashboard.vue";
 import SearchLecture from "./Lecture/SearchLecture.vue";
 import LectureManage from "./Lecture/LectureManage.vue";
 import Scheduler from "./Scheduler.vue";

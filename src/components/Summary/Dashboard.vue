@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import ProgressBar from "./Lecture/ProgressBar.vue";
-import ProgressInfo from "./Lecture/ProgressInfo.vue";
+import ProgressBar from "./ProgressBar.vue";
+import ProgressInfo from "../Lecture/ProgressInfo.vue";
 export default {
   components: {
     ProgressBar,

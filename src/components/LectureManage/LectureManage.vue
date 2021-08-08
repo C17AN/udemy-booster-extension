@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import LectureList from "./LectureList.vue";
+import LectureList from "../AddLecture/LectureList.vue";
 
 export default {
   components: {
