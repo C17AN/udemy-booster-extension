@@ -16,9 +16,9 @@
       </div>
     </div>
     <div class="bottom-container">
-      <p class="language">
-        <span class="lang-en">English</span> / <span class="lang-ko">한글</span>
-      </p>
+      <div v-if="isError" class="error-alert">
+        로그인 실패 : API 키를 다시 확인해주세요.
+      </div>
       <button class="check-id-btn" @click="verify">아이디 확인</button>
     </div>
   </div>
@@ -29,7 +29,7 @@
 import Footer from "./Footer.vue";
 import base64 from "base-64";
 // import endPoint from "../constant/endpoint";
-import { verifyTarget } from "../constant/endpoint";
+// import { verifyTarget } from "../constant/endpoint";
 
 export default {
   components: {
@@ -38,31 +38,32 @@ export default {
   name: "Login",
   data() {
     return {
+      isError: false,
       clientId: "",
       clientSecret: "",
-      encodedSecret: "",
     };
   },
   methods: {
     verify: async function() {
-      // const proxyURLForChrome = `https://www.udemy.com/api-2.0/courses/${verifyTarget}`;
-      const proxyURLForDev = `/courses/${verifyTarget}`;
-      try {
-        const res = await fetch(proxyURLForDev, {
-          method: "GET",
-          headers: {
-            Authorization: `Basic ${this.encodedSecret}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await res.json();
-        console.log(res.ok, data);
-        if (res.ok) {
-          this.$store.commit("verifyApiKey");
-        }
-      } catch (err) {
-        alert("ERROR!", err);
+      // const proxyURLForChrome = `https://www.udemy.com/api-2.0/courses/?page=1&page_size=1`;
+      const proxyURLForDev = `/courses/?page=1&page_size=1`;
+      const res = await fetch(proxyURLForDev, {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${this.encodedSecret}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(res.ok, data);
+      if (res.ok) {
+        this.$store.commit("verifyApiKey");
+      } else {
+        this.isError = true;
+        setTimeout(() => {
+          this.isError = false;
+        }, 3000);
       }
     },
     saveId(e) {
@@ -77,7 +78,11 @@ export default {
   created() {
     this.clientId = localStorage.getItem("clientId");
     this.clientSecret = localStorage.getItem("clientSecret");
-    this.encodedSecret = base64.encode(`${this.clientId}:${this.clientSecret}`);
+  },
+  computed: {
+    encodedSecret() {
+      return base64.encode(`${this.clientId}:${this.clientSecret}`);
+    },
   },
 };
 </script>
@@ -145,6 +150,26 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .error-alert {
+    color: rgba(255, 0, 0, 0.801);
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0;
+    animation: 3s 0s ease-in fadeIn;
+    @keyframes fadeIn {
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
   .language {
     font-weight: 400;
     font-size: 14px;
