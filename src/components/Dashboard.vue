@@ -9,7 +9,6 @@
       <ul>
         <ProgressInfo />
         <ProgressInfo />
-        <ProgressInfo />
       </ul>
     </div>
   </div>

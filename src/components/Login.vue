@@ -45,18 +45,25 @@ export default {
   },
   methods: {
     verify: async function() {
-      const proxyURL = `/courses/${verifyTarget}`;
-      const res = await fetch(proxyURL, {
-        method: "GET",
-        headers: {
-          Authorization: `Basic ${this.encodedSecret}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      console.log(res.ok, data);
-      this.$store.commit("verifyApiKey");
+      // const proxyURLForChrome = `https://www.udemy.com/api-2.0/courses/${verifyTarget}`;
+      const proxyURLForDev = `/courses/${verifyTarget}`;
+      try {
+        const res = await fetch(proxyURLForDev, {
+          method: "GET",
+          headers: {
+            Authorization: `Basic ${this.encodedSecret}`,
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        console.log(res.ok, data);
+        if (res.ok) {
+          this.$store.commit("verifyApiKey");
+        }
+      } catch (err) {
+        alert("ERROR!", err);
+      }
     },
     saveId(e) {
       this.clientId = e.target.value;
@@ -72,11 +79,6 @@ export default {
     this.clientSecret = localStorage.getItem("clientSecret");
     this.encodedSecret = base64.encode(`${this.clientId}:${this.clientSecret}`);
   },
-  // computed: {
-  //   basicBase64() {
-  //     return base64.encode(`${this.clientId}:${this.clientSecret}`);
-  //   },
-  // },
 };
 </script>
 

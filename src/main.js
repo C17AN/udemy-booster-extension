@@ -4,7 +4,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret, faCog, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import App from "./App.vue";
-import base64 from "base-64";
+// import base64 from "base-64";
 import "./style.css";
 
 const store = createStore({
@@ -16,10 +16,10 @@ const store = createStore({
       settingMenuOpened: false,
       clientId: localStorage.getItem("clientId") || "",
       clientSecret: localStorage.getItem("clientSecret") || "",
-      encodedSecret:
-        `Basic ${base64.encode(
-          localStorage.getItem("clientId") + ":" + localStorage.getItem("clientSecret")
-        )}` || "",
+      encodedSecret: "",
+      // `Basic ${base64.encode(
+      //   localStorage.getItem("clientId") + ":" + localStorage.getItem("clientSecret")
+      // )}` || "",
     };
   },
   mutations: {

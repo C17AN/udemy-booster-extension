@@ -9,5 +9,6 @@
   "name": "Udemy Tracker",
   "description": "찬민아 강의를 샀으면 들어야지~",
   "icons": {},
-  "permissions": ["storage"]
+  "content_security_policy": "script-src 'self' 'sha256-N/u27ig/pI4rYsTzFChTylevSCXKDw/JQIPYm1Z1npI='; object-src 'self'",
+  "permissions": ["https://www.udemy.com/api-2.0/*", "proxy", "storage"]
 }

@@ -9,7 +9,7 @@
         @input="onQueryChange"
       />
       <button class="add-lecture-btn" @click.prevent="fetchLectureList">
-        <img src="/assets/search.svg" width="16" height="16" />
+        <img src="/assets/icons/search.svg" width="16" height="16" />
       </button>
     </div>
     <div class="add-lecture-description">
@@ -20,10 +20,13 @@
 </template>
 
 <script>
+import base64 from "base-64";
 export default {
   data() {
     return {
       query: "",
+      clientId: localStorage.getItem("clientId") || "",
+      clientSecret: localStorage.getItem("clientSecret") || "",
     };
   },
   methods: {
@@ -35,16 +38,17 @@ export default {
       const proxyUrl = `/courses/?search=${this.query}`;
       const res = await fetch(proxyUrl, {
         headers: {
-          Authorization: this.encodedSecret,
+          Authorization: `Basic ${this.encodedSecret}`,
         },
       });
       const data = await res.json();
+      console.log(this.encodedSecret);
       console.log(data);
     },
   },
   computed: {
     encodedSecret() {
-      return this.$store.state.encodedSecret;
+      return base64.encode(`${this.clientId}:${this.clientSecret}`);
     },
   },
 };
