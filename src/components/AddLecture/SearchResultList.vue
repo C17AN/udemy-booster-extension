@@ -1,6 +1,6 @@
 <template>
   <ul class="container">
-    <SearchResultItem :title="item.title" v-for="item in searchResult" :key="item.id" />
+    <SearchResultItem :data="item" v-for="item in searchResult" :key="item.id" />
   </ul>
 </template>
 
@@ -22,6 +22,7 @@ export default {
   width: 100%;
   height: 270px;
   margin-top: 16px;
+  border-radius: 4px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
