@@ -11,10 +11,10 @@ export default {};
 
 <style scoped lang="scss">
 footer {
-  height: 100px;
+  height: 90px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 16px;
   background-color: var(--skyblue-100);
   h2 {
     font-weight: 500;

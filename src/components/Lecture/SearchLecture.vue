@@ -1,8 +1,16 @@
 <template>
   <form class="container">
     <div class="add-lecture">
-      <input type="text" id="add-lecture-input" placeholder="강의번호 입력" />
-      <button class="add-lecture-btn">강의 추가</button>
+      <input
+        type="text"
+        id="add-lecture-input"
+        placeholder="강의 제목으로 찾기"
+        autocomplete="off"
+        @input="onQueryChange"
+      />
+      <button class="add-lecture-btn">
+        <img src="/assets/search.svg" width="16" height="16" />
+      </button>
     </div>
     <div class="add-lecture-description">
       <font-awesome-icon icon="question-circle" />
@@ -12,7 +20,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      query: "",
+    };
+  },
+  methods: {
+    onQueryChange(e) {
+      this.query = e.target.value;
+      console.log(this.query);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -25,18 +45,19 @@ export default {};
 }
 
 .add-lecture {
+  display: flex;
   margin-bottom: 14px;
 
   #add-lecture-input {
-    padding: 8px 6px;
-    border-radius: 8px;
-    margin-right: 12px;
+    padding: 8px 8px;
+    border-radius: 8px 0 0 8px;
     width: 250px;
     border: 1px solid #cdcdcd;
-    transition: border 0.1s ease;
+    border-right: none;
+    transition: border 0.2s ease;
     &:focus {
-      transition: border 0.1s ease;
-      border: 1px solid var(--skyblue-500);
+      transition: border 0.2s ease;
+      border-color: var(--skyblue-500);
     }
   }
   .add-lecture-btn {
@@ -45,7 +66,8 @@ export default {};
     background-color: var(--skyblue-300);
     color: white;
     border: 1px solid #cdcdcd;
-    border-radius: 8px;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
     cursor: pointer;
     transition: all 0.2s ease;
     &:hover {
