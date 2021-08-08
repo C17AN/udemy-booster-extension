@@ -1,33 +1,40 @@
 <template>
-  <form class="container">
-    <div class="add-lecture">
-      <input
-        type="text"
-        id="add-lecture-input"
-        placeholder="강의 제목으로 찾기"
-        autocomplete="off"
-        @input="onQueryChange"
-      />
-      <button class="add-lecture-btn" @click.prevent="fetchLectureList">
-        <img src="/assets/icons/search.svg" width="16" height="16" />
-      </button>
-    </div>
-    <div class="add-lecture-description">
-      <font-awesome-icon icon="question-circle" />
-      <p>강의번호를 잘 모르겠다면, 메뉴얼을 참고해 주세요.</p>
-    </div>
-  </form>
+  <div class="searchLecture-container">
+    <form>
+      <div class="add-lecture">
+        <input
+          type="text"
+          id="add-lecture-input"
+          placeholder="강의 제목 또는 강사명으로 찾기"
+          autocomplete="off"
+          @input="onQueryChange"
+        />
+        <button class="add-lecture-btn" @click.prevent="fetchLectureList">
+          <img src="/assets/icons/search.svg" width="16" height="16" />
+        </button>
+      </div>
+      <div class="add-lecture-description">
+        <font-awesome-icon icon="question-circle" />
+        <p>검색 결과</p>
+      </div>
+    </form>
+    <SearchResultList :searchResult="searchResult" />
+  </div>
 </template>
 
 <script>
 import base64 from "base-64";
+import SearchResultList from "./SearchResultList.vue";
 export default {
+  components: {
+    SearchResultList,
+  },
   data() {
     return {
       query: "",
       clientId: localStorage.getItem("clientId") || "",
       clientSecret: localStorage.getItem("clientSecret") || "",
-      searchResults: [],
+      searchResult: [],
     };
   },
   methods: {
@@ -43,7 +50,7 @@ export default {
         },
       });
       const data = await res.json();
-      this.searchResults = [...this.searchResults, results];
+      this.searchResult = [...data.results];
       console.log(data);
     },
   },
@@ -56,12 +63,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.searchLecture-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   flex-direction: column;
+  form {
+    width: 100%;
+  }
 }
 
 .add-lecture {
@@ -71,7 +81,7 @@ export default {
   #add-lecture-input {
     padding: 8px 8px;
     border-radius: 8px 0 0 8px;
-    width: 250px;
+    width: 100%;
     border: 1px solid #cdcdcd;
     border-right: none;
     transition: border 0.2s ease;

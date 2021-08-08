@@ -44,6 +44,6 @@ export default {
 <style scoped>
 .container {
   width: 400px;
-  height: 480px;
+  height: 500px;
 }
 </style>

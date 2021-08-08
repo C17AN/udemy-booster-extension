@@ -31,9 +31,9 @@
 
 <script>
 import Dashboard from "./Summary/Dashboard.vue";
-import SearchLecture from "./Lecture/SearchLecture.vue";
-import LectureManage from "./Lecture/LectureManage.vue";
-import Scheduler from "./Scheduler.vue";
+import SearchLecture from "./AddLecture/SearchLecture.vue";
+import LectureManage from "./LectureManage/LectureManage.vue";
+import Scheduler from "./Schedule/Scheduler.vue";
 
 export default {
   components: {

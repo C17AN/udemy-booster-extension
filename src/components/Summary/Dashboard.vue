@@ -16,7 +16,7 @@
 
 <script>
 import ProgressBar from "./ProgressBar.vue";
-import ProgressInfo from "../Lecture/ProgressInfo.vue";
+import ProgressInfo from "./ProgressInfo.vue";
 export default {
   components: {
     ProgressBar,
