@@ -8,7 +8,7 @@
         autocomplete="off"
         @input="onQueryChange"
       />
-      <button class="add-lecture-btn">
+      <button class="add-lecture-btn" @click.prevent="fetchLectureList">
         <img src="/assets/search.svg" width="16" height="16" />
       </button>
     </div>
@@ -30,6 +30,21 @@ export default {
     onQueryChange(e) {
       this.query = e.target.value;
       console.log(this.query);
+    },
+    fetchLectureList: async function() {
+      const proxyUrl = `/courses/?search=${this.query}`;
+      const res = await fetch(proxyUrl, {
+        headers: {
+          Authorization: this.encodedSecret,
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+    },
+  },
+  computed: {
+    encodedSecret() {
+      return this.$store.state.encodedSecret;
     },
   },
 };

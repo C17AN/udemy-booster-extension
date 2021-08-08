@@ -45,8 +45,8 @@ export default {
   },
   methods: {
     verify: async function() {
-      const urlProxy = `/courses/${verifyTarget}`;
-      const res = await fetch(urlProxy, {
+      const proxyURL = `/courses/${verifyTarget}`;
+      const res = await fetch(proxyURL, {
         method: "GET",
         headers: {
           Authorization: `Basic ${this.encodedSecret}`,
@@ -72,11 +72,11 @@ export default {
     this.clientSecret = localStorage.getItem("clientSecret");
     this.encodedSecret = base64.encode(`${this.clientId}:${this.clientSecret}`);
   },
-  computed: {
-    basicBase64() {
-      return base64.encode(`${this.clientId}:${this.clientSecret}`);
-    },
-  },
+  // computed: {
+  //   basicBase64() {
+  //     return base64.encode(`${this.clientId}:${this.clientSecret}`);
+  //   },
+  // },
 };
 </script>
 
