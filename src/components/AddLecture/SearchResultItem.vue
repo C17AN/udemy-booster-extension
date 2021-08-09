@@ -3,7 +3,7 @@
     <img :src="image" />
     <div class="search-item-content">
       <a class="item-title" :href="url" target="_blank" noreferer noopener>{{ title }}</a>
-      <button>목록에 추가</button>
+      <p class="item-price">{{ price }}</p>
     </div>
   </li>
 </template>
@@ -22,6 +22,9 @@ export default {
     },
     url() {
       return "https://udemy.com" + this.data.url;
+    },
+    price() {
+      return this.data.price;
     },
   },
 };
@@ -62,5 +65,10 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.item-price {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-top: 5px;
 }
 </style>

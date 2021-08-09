@@ -13,19 +13,25 @@
           <img src="/assets/icons/search.svg" width="16" height="16" />
         </button>
       </div>
-      <div class="add-lecture-description">
+      <div class="add-lecture-description" v-if="searchResult.length > 0">
         <div>
           <font-awesome-icon icon="question-circle" />
           <p>검색 결과</p>
           <p v-if="resultCount > 0 === true" class="result-count">(총 {{ resultCount }} 건)</p>
         </div>
-        <div>
-          <button @click.prevent="fetchPrevPage">이전</button>
-          <button @click.prevent="fetchNextPage">다음</button>
+        <div class="query-btn-container">
+          <button @click.prevent="fetchPrevPage" class="query-next-btn" v-if="prevPage !== null">이전</button>
+          <button @click.prevent="fetchNextPage" class="query-prev-btn" v-if="nextPage !== null">다음</button>
         </div>
       </div>
     </form>
-    <SearchResultList :searchResult="searchResult" />
+    <SearchResultList :searchResult="searchResult" v-if="searchResult.length > 0" />
+    <p class="search-tip" v-else>
+      <ul>
+         <li>수강하고 있는 강의명을 검색해 관리 목록에 추가할 수 있습니다.</li>
+         <li>강의 또는 강사명을 그대로 복사해서 입력하는 것을 권장합니다.</li>
+      </ul>
+    </p>
   </div>
 </template>
 
@@ -44,6 +50,8 @@ export default {
       searchResult: [],
       resultCount: 0,
       pageIndex: 1,
+      nextPage: null,
+      prevPage: null
     };
   },
   methods: {
@@ -62,7 +70,7 @@ export default {
       const data = await res.json();
       this.searchResult = [...data.results];
       this.resultCount = data.count;
-      this.prevPage = data.prev;
+      this.prevPage = data.previous;
       this.nextPage = data.next;
     },
     fetchNextPage: async function() {
@@ -131,6 +139,7 @@ export default {
   font-size: 13px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   .result-count {
     margin-left: 4px;
   }
@@ -144,4 +153,35 @@ export default {
     color: var(--gray-500);
   }
 }
+
+.query-btn-container {
+  button {
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    background-color: var(--skyblue-200);
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      transition: background-color 0.2s ease-in-out;
+      background-color: var(--skyblue-400);
+    }
+  }
+  .query-next-btn {
+    margin-right: 8px;
+  }
+  .query-prev-btn {
+  }
+
+}
+  .search-tip {
+    font-size: 13px;
+    color: #555;
+    li {
+      list-style-type: disc;
+      margin: 6px 0;
+    }
+  }
 </style>
