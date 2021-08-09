@@ -1,17 +1,32 @@
 <template>
   <ul class="container">
-    <SearchResultItem :data="item" v-for="item in searchResult" :key="item.id" />
+    <SearchResultItem
+      :data="item"
+      v-for="item in searchResult"
+      :key="item.id"
+      :selectedItem="selectedItem"
+      :setSelectedItem="setSelectedItem"
+    />
   </ul>
 </template>
 
 <script>
 import SearchResultItem from "./SearchResultItem.vue";
 export default {
+  data() {
+    return { selectedItem: null };
+  },
   components: {
     SearchResultItem,
   },
   props: {
     searchResult: Array,
+  },
+  methods: {
+    setSelectedItem(index) {
+      this.selectedItem = index;
+      console.log(this.selectedItem);
+    },
   },
 };
 </script>

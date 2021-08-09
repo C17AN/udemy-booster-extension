@@ -1,5 +1,6 @@
 <template>
-  <li class="search-item-container">
+  <li class="search-item-container" @mouseover="hover = true" @mouseleave="hover = false">
+    <HoverMenu v-if="hover" :id="selectedItem" />
     <img :src="image" />
     <div class="search-item-content">
       <a class="item-title" :href="url" target="_blank" noreferer noopener>{{ title }}</a>
@@ -9,9 +10,20 @@
 </template>
 
 <script>
+import HoverMenu from "./HoverMenu.vue";
 export default {
+  components: {
+    HoverMenu,
+  },
+  data() {
+    return {
+      hover: false,
+    };
+  },
   props: {
     data: Object,
+    selectedItem: Number || null,
+    setSelectedItem: Function,
   },
   computed: {
     title() {
@@ -26,6 +38,9 @@ export default {
     price() {
       return this.data.price;
     },
+    id() {
+      return this.data.id;
+    },
   },
 };
 </script>
@@ -33,6 +48,7 @@ export default {
 <style scoped lang="scss">
 .search-item-container {
   display: flex;
+  position: relative;
   align-items: flex-start;
   border-bottom: 1px solid #cdcdcd;
   padding: 8px 4px 8px 8px;
