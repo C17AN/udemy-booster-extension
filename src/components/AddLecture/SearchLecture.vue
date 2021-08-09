@@ -14,8 +14,15 @@
         </button>
       </div>
       <div class="add-lecture-description">
-        <font-awesome-icon icon="question-circle" />
-        <p>검색 결과</p>
+        <div>
+          <font-awesome-icon icon="question-circle" />
+          <p>검색 결과</p>
+          <p v-if="resultCount > 0 === true" class="result-count">(총 {{ resultCount }} 건)</p>
+        </div>
+        <div>
+          <button @click.prevent="fetchPrevPage">이전</button>
+          <button @click.prevent="fetchNextPage">다음</button>
+        </div>
       </div>
     </form>
     <SearchResultList :searchResult="searchResult" />
@@ -35,6 +42,8 @@ export default {
       clientId: localStorage.getItem("clientId") || "",
       clientSecret: localStorage.getItem("clientSecret") || "",
       searchResult: [],
+      resultCount: 0,
+      pageIndex: 1,
     };
   },
   methods: {
@@ -43,15 +52,26 @@ export default {
       console.log(this.query);
     },
     fetchLectureList: async function() {
-      const proxyUrl = `/courses/?search=${this.query}`;
-      const res = await fetch(proxyUrl, {
+      // const proxyURLForChrome = `https://www.udemy.com/api-2.0/courses/?search=${this.query}`;
+      const proxyURLForDev = `/courses/?page=${this.pageIndex}&search=${this.query}`;
+      const res = await fetch(proxyURLForDev, {
         headers: {
           Authorization: `Basic ${this.encodedSecret}`,
         },
       });
       const data = await res.json();
       this.searchResult = [...data.results];
-      console.log(data);
+      this.resultCount = data.count;
+      this.prevPage = data.prev;
+      this.nextPage = data.next;
+    },
+    fetchNextPage: async function() {
+      this.pageIndex += 1;
+      await this.fetchLectureList();
+    },
+    fetchPrevPage: async function() {
+      this.pageIndex -= 1;
+      await this.fetchLectureList();
     },
   },
   computed: {
@@ -109,6 +129,11 @@ export default {
 
 .add-lecture-description {
   font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  .result-count {
+    margin-left: 4px;
+  }
   svg {
     display: inline-block;
     margin-right: 6px;
