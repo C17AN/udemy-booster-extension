@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <div class="lecture-manage-container">
+    <h1>강의 목록</h1>
     <LectureList />
   </div>
 </template>
@@ -15,9 +16,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container {
+.lecture-manage-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 }
 </style>

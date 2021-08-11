@@ -1,6 +1,6 @@
 <template>
-  <li class="search-item-container" @mouseover="hover = true" @mouseleave="hover = false">
-    <HoverMenu v-if="hover" :id="selectedItem" />
+  <li class="search-item-container" @mouseover="handleHoverMenu" @mouseleave="hover = false">
+    <HoverMenu v-if="hover" :id="selectedItem" :url="url" />
     <img :src="image" />
     <div class="search-item-content">
       <a class="item-title" :href="url" target="_blank" noreferer noopener>{{ title }}</a>
@@ -19,6 +19,14 @@ export default {
     return {
       hover: false,
     };
+  },
+  methods: {
+    // 성능이슈 있을거같은데
+    handleHoverMenu() {
+      this.hover = true;
+      console.log(this.id);
+      this.setSelectedItem(this.id);
+    },
   },
   props: {
     data: Object,

@@ -10,47 +10,7 @@
 </template>
 
 <script>
-import LectureItem from "./LectureItem.vue";
-const data = {
-  lectures: [
-    {
-      id: "1",
-      name: "Vue.js",
-    },
-    {
-      id: "2",
-      name: "React.js",
-    },
-    {
-      id: "3",
-      name: "Typescript",
-    },
-    {
-      id: "4",
-      name: "Vue.js",
-    },
-    {
-      id: "5",
-      name: "React.js",
-    },
-    {
-      id: "6",
-      name: "Typescript",
-    },
-    {
-      id: "7",
-      name: "Vue.js",
-    },
-    {
-      id: "8",
-      name: "React.js",
-    },
-    {
-      id: "9",
-      name: "Typescript",
-    },
-  ],
-};
+import LectureItem from "../LectureManage/LectureItem.vue";
 
 export default {
   components: {
@@ -62,7 +22,6 @@ export default {
     };
   },
   created() {
-    localStorage.setItem("lectureList", JSON.stringify(data));
     // this.lectureList = JSON.parse(localStorage.getItem("lectureList")).lectures;
   },
 };

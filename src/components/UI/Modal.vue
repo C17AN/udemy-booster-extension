@@ -25,7 +25,7 @@ export default {
   left: 0;
   position: fixed;
   z-index: 999;
-  height: inherit;
+  height: 500px;
   width: inherit;
 }
 .container {

@@ -25,7 +25,6 @@ export default {
   methods: {
     setSelectedItem(index) {
       this.selectedItem = index;
-      console.log(this.selectedItem);
     },
   },
 };
