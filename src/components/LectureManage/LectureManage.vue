@@ -1,6 +1,6 @@
 <template>
   <div class="lecture-manage-container">
-    <h1>강의 목록</h1>
+    <h1>수강중인 강의 목록</h1>
     <LectureList />
   </div>
 </template>

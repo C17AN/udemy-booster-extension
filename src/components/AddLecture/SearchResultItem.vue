@@ -1,6 +1,6 @@
 <template>
   <li class="search-item-container" @mouseover="handleHoverMenu" @mouseleave="hover = false">
-    <HoverMenu v-if="hover" :id="selectedItem" :url="url" />
+    <HoverMenu v-if="hover" :id="selectedItem" :title="title" :image="image" :url="url" />
     <img :src="image" />
     <div class="search-item-content">
       <a class="item-title" :href="url" target="_blank" noreferer noopener>{{ title }}</a>

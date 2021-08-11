@@ -1,7 +1,9 @@
 <template>
   <li class="container">
-    <div>
-      <p class="lecture-name">{{ name }}</p>
+    <img :src="image" />
+    <div class="content">
+      <p class="lecture-name">{{ title }}</p>
+      <p class="lecture-progress">{{ progress }}%</p>
     </div>
   </li>
 </template>
@@ -9,7 +11,9 @@
 <script>
 export default {
   props: {
-    name: String,
+    image: String,
+    title: String,
+    progress: Number,
   },
 };
 </script>
@@ -22,8 +26,28 @@ export default {
   border-radius: 4px;
   padding: 8px;
   margin: 12px 0;
+
+  img {
+    width: 64px;
+    margin-right: 10px;
+  }
 }
+
+.content {
+  width: inherit;
+}
+
 .lecture-name {
-  font-size: 15px;
+  font-size: 13px;
+  width: 270px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.lecture-progress {
+  font-size: 12px;
+  margin-top: 5px;
+  color: var(--gray-400);
+  font-weight: 600;
 }
 </style>

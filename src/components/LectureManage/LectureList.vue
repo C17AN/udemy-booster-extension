@@ -1,7 +1,13 @@
 <template>
   <div v-if="lectureList.length > 0">
     <ul class="container">
-      <LectureItem v-for="lecture in lectureList" :key="lecture.id" :name="lecture.name" />
+      <LectureItem
+        v-for="lecture in lectureList"
+        :key="lecture.id"
+        :title="lecture.title"
+        :image="lecture.image"
+        :progress="lecture.progress"
+      />
     </ul>
   </div>
   <div v-else>
@@ -17,12 +23,15 @@ export default {
     LectureItem,
   },
   data() {
-    return {
-      lectureList: [],
-    };
+    return {};
   },
-  created() {
-    // this.lectureList = JSON.parse(localStorage.getItem("lectureList")).lectures;
+  computed: {
+    lectureList() {
+      return localStorage.getItem("lectureList") === null ||
+        localStorage.getItem("lectureList") === ""
+        ? []
+        : JSON.parse(localStorage.getItem("lectureList"));
+    },
   },
 };
 </script>

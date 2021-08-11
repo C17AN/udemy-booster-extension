@@ -1,14 +1,14 @@
 <template>
   <div class="hover-menu-container">
     <ul class="hover-menu-items">
-      <li class="hover-menu-item" v-if="lectureList.indexOf(id) !== -1">
+      <li class="hover-menu-item" v-if="lectureList.some((lecture) => lecture.id === id) === true">
         <img src="/assets/icons/checked.svg" width="20" height="20" />
         <p>저장됨</p>
       </li>
       <li
         class="hover-menu-item"
         @click="addLectureToStorage"
-        v-if="lectureList.indexOf(id) === -1"
+        v-if="lectureList.some((lecture) => lecture.id === id) === false"
       >
         <img src="/assets/icons/add.svg" width="20" height="20" />
         <p>강의 추가</p>
@@ -25,6 +25,8 @@
 export default {
   props: {
     id: Number,
+    title: String,
+    image: String,
     url: String,
   },
   data() {
@@ -37,8 +39,11 @@ export default {
   },
   methods: {
     addLectureToStorage() {
-      if (this.lectureList.indexOf(this.id) === -1) {
-        this.lectureList = [...this.lectureList, this.id];
+      if (this.lectureList.some((lecture) => lecture.id === this.id) === false) {
+        this.lectureList = [
+          ...this.lectureList,
+          { id: this.id, title: this.title, image: this.image, progress: 0 },
+        ];
         localStorage.setItem("lectureList", JSON.stringify(this.lectureList));
       }
       console.log(JSON.parse(localStorage.getItem("lectureList")));
