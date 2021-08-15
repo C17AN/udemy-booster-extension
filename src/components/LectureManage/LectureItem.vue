@@ -35,10 +35,16 @@ export default {
   border-radius: 4px;
   padding: 8px;
   margin: 12px 0;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 
   img {
     width: 64px;
     margin-right: 10px;
+  }
+  &:hover {
+    border-color: var(--skyblue-400);
+    transition: 0.2s ease-in-out;
   }
 }
 

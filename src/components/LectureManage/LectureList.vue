@@ -17,7 +17,7 @@
     <p>이런, 아직 강의 목록이 비어있네요!</p>
   </div>
   <Modal :closeModal="closeModal" v-if="isOpened">
-    <LectureCourse />
+    <LectureCourse :id="selectedLectureId" />
   </Modal>
 </template>
 
