@@ -7,23 +7,49 @@
         :title="lecture.title"
         :image="lecture.image"
         :progress="lecture.progress"
+        :id="lecture.id"
+        :openModal="openModal"
+        :setSelectedLectureId="setSelectedLectureId"
       />
     </ul>
   </div>
   <div v-else>
     <p>이런, 아직 강의 목록이 비어있네요!</p>
   </div>
+  <Modal :closeModal="closeModal" v-if="isOpened">
+    <LectureCourse />
+  </Modal>
 </template>
 
 <script>
 import LectureItem from "../LectureManage/LectureItem.vue";
+import Modal from "../UI/Modal.vue";
+import LectureCourse from "./LectureCourse.vue";
 
 export default {
   components: {
     LectureItem,
+    LectureCourse,
+    Modal,
   },
+
   data() {
-    return {};
+    return {
+      isOpened: false,
+      selectedLectureId: null,
+    };
+  },
+  methods: {
+    closeModal() {
+      this.isOpened = false;
+    },
+    openModal() {
+      this.isOpened = true;
+    },
+    setSelectedLectureId(id) {
+      this.selectedLectureId = id;
+      console.log(this.selectedLectureId);
+    },
   },
   computed: {
     lectureList() {

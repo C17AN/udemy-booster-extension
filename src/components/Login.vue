@@ -55,8 +55,7 @@ export default {
           "Content-Type": "application/json",
         },
       });
-      const data = await res.json();
-      console.log(res.ok, data);
+      // const data = await res.json();
       if (res.ok) {
         this.$store.commit("verifyApiKey");
       } else {

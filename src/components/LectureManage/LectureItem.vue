@@ -1,5 +1,5 @@
 <template>
-  <li class="container">
+  <li class="container" @click="handleLectureItemClick">
     <img :src="image" />
     <div class="content">
       <p class="lecture-name">{{ title }}</p>
@@ -11,9 +11,18 @@
 <script>
 export default {
   props: {
+    id: String,
     image: String,
     title: String,
     progress: Number,
+    openModal: Function,
+    setSelectedLectureId: Function,
+  },
+  methods: {
+    handleLectureItemClick() {
+      this.setSelectedLectureId(this.id);
+      this.openModal();
+    },
   },
 };
 </script>

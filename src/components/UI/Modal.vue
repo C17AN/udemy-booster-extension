@@ -26,7 +26,7 @@ export default {
   position: fixed;
   z-index: 999;
   height: 500px;
-  width: inherit;
+  width: 400px;
 }
 .container {
   background-color: white;
