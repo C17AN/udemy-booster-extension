@@ -1,7 +1,7 @@
 <template>
   <li class="course-lecture-container">
     <div class="course-lecture-content">
-      <span class="course-lecture-title">{{ title }}</span>
+      <span class="course-lecture-title">{{ index + 1 }}. {{ title }}</span>
       <input type="checkbox" />
     </div>
   </li>
@@ -11,6 +11,7 @@
 export default {
   props: {
     title: String,
+    index: Number,
   },
 };
 </script>

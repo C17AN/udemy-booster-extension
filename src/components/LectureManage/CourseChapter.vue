@@ -6,10 +6,11 @@
   </div>
   <ul>
     <CourseLecture
-      v-for="SubLecture in SubLectureList"
+      v-for="(SubLecture, index) in SubLectureList"
       :key="SubLecture.id"
       v-show="collapsed"
       :title="SubLecture.title"
+      :index="index"
     />
   </ul>
 </template>

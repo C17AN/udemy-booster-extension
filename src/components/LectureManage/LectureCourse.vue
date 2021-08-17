@@ -1,6 +1,8 @@
 <template>
   <div class="curriculum-container">
-    <h1>강의 목록</h1>
+    <h1>
+      강의 목록 <span>[총 {{ lectureList.flat().length }}강]</span>
+    </h1>
     <nav>
       <div v-if="isLoading">데이터를 불러오는 중입니다...</div>
       <ul v-else>
@@ -20,7 +22,7 @@ export default {
     CourseChapter,
   },
   props: {
-    id: String,
+    id: Number,
   },
   data() {
     return {
