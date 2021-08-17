@@ -47,13 +47,15 @@ export default {
       this.curriculumList = data.results;
       this.chapterList = this.curriculumList.filter((item) => item._class === "chapter");
       let tempList = [];
-      this.curriculumList.forEach((item) => {
+      this.curriculumList.forEach((item, idx) => {
         if (item._class === "lecture") {
           tempList.push(item);
-        } else {
+        }
+        if (item._class === "chapter" || this.curriculumList.length - 1 === idx) {
           this.lectureList = [...this.lectureList, tempList];
           tempList = [];
         }
+        // console.log(this.lectureList);
       });
     },
   },
