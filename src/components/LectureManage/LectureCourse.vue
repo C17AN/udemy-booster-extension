@@ -1,26 +1,37 @@
 <template>
   <h1>강의 목록</h1>
-  <div>{{ id }}</div>
-  <ul>
-    <li v-for="curriculum in curriculumList" :key="curriculum.id">
-      <span>{{ curriculum.title }}</span>
-    </li>
-  </ul>
+  <nav>
+    <div v-if="isLoading">데이터를 불러오는 중입니다...</div>
+    <ul v-else>
+      <li v-for="(chapter, index) in chapterList" :key="chapter.id">
+        <CourseChapter :title="chapter.title" :SubLectureList="lectureList[index + 1]" />
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
+import CourseChapter from "./CourseChapter.vue";
+
 export default {
+  components: {
+    CourseChapter,
+  },
   props: {
     id: String,
   },
   data() {
     return {
+      isLoading: false,
       curriculumList: [],
+      chapterList: [],
+      lectureList: [],
     };
   },
   methods: {
     async fetchLectureCurriculum() {
-      const proxyURLForDev = `/courses/${this.id}/public-curriculum-items/`;
+      this.isLoading = true;
+      const proxyURLForDev = `/courses/${this.id}/public-curriculum-items/?page=1&page_size=100`;
       const res = await fetch(proxyURLForDev, {
         method: "GET",
         headers: {
@@ -30,10 +41,22 @@ export default {
         },
       });
       const data = await res.json();
-      console.log(data);
+      this.isLoading = false;
       this.curriculumList = data.results;
+      this.chapterList = this.curriculumList.filter((item) => item._class === "chapter");
+      let tempList = [];
+      this.curriculumList.forEach((item) => {
+        if (item._class === "lecture") {
+          tempList.push(item);
+        } else {
+          this.lectureList = [...this.lectureList, tempList];
+          tempList = [];
+        }
+      });
+      console.log(this.lectureList);
     },
   },
+  computed: {},
   created() {
     this.fetchLectureCurriculum();
     console.log(this.id);
