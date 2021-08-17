@@ -1,13 +1,15 @@
 <template>
-  <h1>강의 목록</h1>
-  <nav>
-    <div v-if="isLoading">데이터를 불러오는 중입니다...</div>
-    <ul v-else>
-      <li v-for="(chapter, index) in chapterList" :key="chapter.id">
-        <CourseChapter :title="chapter.title" :SubLectureList="lectureList[index + 1]" />
-      </li>
-    </ul>
-  </nav>
+  <div class="curriculum-container">
+    <h1>강의 목록</h1>
+    <nav>
+      <div v-if="isLoading">데이터를 불러오는 중입니다...</div>
+      <ul v-else>
+        <li v-for="(chapter, index) in chapterList" :key="chapter.id">
+          <CourseChapter :title="chapter.title" :SubLectureList="lectureList[index + 1]" />
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
@@ -31,7 +33,7 @@ export default {
   methods: {
     async fetchLectureCurriculum() {
       this.isLoading = true;
-      const proxyURLForDev = `/courses/${this.id}/public-curriculum-items/?page=1&page_size=100`;
+      const proxyURLForDev = `/courses/${this.id}/public-curriculum-items/?page=1&page_size=1000`;
       const res = await fetch(proxyURLForDev, {
         method: "GET",
         headers: {
@@ -53,15 +55,18 @@ export default {
           tempList = [];
         }
       });
-      console.log(this.lectureList);
     },
   },
-  computed: {},
   created() {
     this.fetchLectureCurriculum();
-    console.log(this.id);
   },
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+</style>

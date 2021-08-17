@@ -30,6 +30,7 @@ export default {
 }
 .container {
   background-color: white;
+  overflow-y: scroll;
   margin: 20px;
   padding: 24px;
   height: 80%;
