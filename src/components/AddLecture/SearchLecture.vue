@@ -93,8 +93,8 @@ export default {
 <style lang="scss" scoped>
 .searchLecture-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex:1;
   margin-bottom: 20px;
   flex-direction: column;
   form {
@@ -172,8 +172,7 @@ export default {
   .query-next-btn {
     margin-right: 8px;
   }
-  .query-prev-btn {
-  }
+
 
 }
   .search-tip {

@@ -1,6 +1,6 @@
 <template>
   <div v-if="lectureList.length > 0">
-    <ul class="container">
+    <ul class="lectureList-container">
       <LectureItem
         v-for="lecture in lectureList"
         :key="lecture.id"
@@ -13,7 +13,7 @@
       />
     </ul>
   </div>
-  <div v-else>
+  <div class="lectureList-empty" v-else>
     <p>이런, 아직 강의 목록이 비어있네요!</p>
   </div>
   <Modal :closeModal="closeModal" v-if="isOpened">
@@ -63,9 +63,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.lectureList-container {
   max-height: 300px;
   overflow-y: scroll;
   margin-top: 8px;
+}
+.lectureList-empty {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 </style>

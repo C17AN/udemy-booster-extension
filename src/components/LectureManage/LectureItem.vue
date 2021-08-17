@@ -11,7 +11,7 @@
 <script>
 export default {
   props: {
-    id: String,
+    id: Number,
     image: String,
     title: String,
     progress: Number,

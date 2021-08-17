@@ -13,16 +13,16 @@
       </li>
     </ul>
     <div class="main-view">
-      <div v-if="currentPage === 'myPage'">
+      <div class="page-wrapper" v-if="currentPage === 'myPage'">
         <Dashboard />
       </div>
-      <div v-else-if="currentPage === 'searchLecture'">
+      <div class="page-wrapper" v-else-if="currentPage === 'searchLecture'">
         <SearchLecture />
       </div>
-      <div v-else-if="currentPage === 'lectureManage'">
+      <div class="page-wrapper" v-else-if="currentPage === 'lectureManage'">
         <LectureManage />
       </div>
-      <div v-else-if="currentPage === 'scheduler'">
+      <div class="page-wrapper" v-else-if="currentPage === 'scheduler'">
         <Scheduler />
       </div>
     </div>
@@ -70,6 +70,11 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
 .menu {
   display: flex;
@@ -96,6 +101,8 @@ export default {
 }
 
 .main-view {
+  display: flex;
   padding: 0 20px 12px 20px;
+  flex: 1;
 }
 </style>

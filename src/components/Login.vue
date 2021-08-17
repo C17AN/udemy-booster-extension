@@ -8,11 +8,11 @@
     <div class="input-container">
       <div class="login-input">
         <label for="clientId">발급받은 클라이언트 아이디를 입력해 주세요.</label>
-        <input id="clientId" type="text" @input="saveId" />
+        <input id="clientId" type="text" @input="saveId" autocomplete="off" />
       </div>
       <div class="login-input">
         <label for="clientPw">발급받은 비밀 키를 입력해 주세요.</label>
-        <input id="clientPw" type="password" @input="saveSecret" />
+        <input id="clientPw" type="password" @input="saveSecret" autocomplete="off" />
       </div>
     </div>
     <div class="bottom-container">
@@ -56,6 +56,7 @@ export default {
         },
       });
       // const data = await res.json();
+
       if (res.ok) {
         this.$store.commit("verifyApiKey");
       } else {

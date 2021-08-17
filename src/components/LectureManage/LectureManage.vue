@@ -18,6 +18,7 @@ export default {
 <style scoped lang="scss">
 .lecture-manage-container {
   display: flex;
+  flex: 1;
   flex-direction: column;
   h1 {
     font-size: 1.2rem;

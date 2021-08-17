@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.dashboard-container {
+  flex: 1;
+}
 h1 {
   font-size: 1.16rem;
   font-weight: 500;
