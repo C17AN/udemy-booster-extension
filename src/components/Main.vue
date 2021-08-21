@@ -101,7 +101,6 @@ export default {
 }
 
 .main-view {
-  display: flex;
   padding: 0 20px 12px 20px;
   flex: 1;
 }

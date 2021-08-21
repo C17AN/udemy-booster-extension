@@ -24,7 +24,6 @@ export default {
     // 성능이슈 있을거같은데
     handleHoverMenu() {
       this.hover = true;
-      console.log(this.id);
       this.setSelectedItem(this.id);
     },
   },

@@ -24,7 +24,7 @@
 <script>
 import LectureItem from "../LectureManage/LectureItem.vue";
 import Modal from "../UI/Modal.vue";
-import LectureCourse from "./LectureCourse.vue";
+import LectureCourse from "../LectureCurriculum/LectureCourse.vue";
 
 export default {
   components: {

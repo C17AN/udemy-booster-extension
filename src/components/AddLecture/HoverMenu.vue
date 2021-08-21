@@ -44,7 +44,10 @@ export default {
           ...this.lectureList,
           { id: this.id, title: this.title, image: this.image, progress: 0 },
         ];
+        // 로컬스토리지에 내가 수강중인 강의를 추가함
         localStorage.setItem("lectureList", JSON.stringify(this.lectureList));
+        // 해당 강의의 커리큘럼 리스트를 빈 배열로 초기화함
+        localStorage.setItem(this.id, JSON.stringify([]));
       }
       console.log(JSON.parse(localStorage.getItem("lectureList")));
     },
