@@ -23,7 +23,7 @@ export default {
   data() {
     return {
       isComplete:
-        JSON.parse(localStorage.getItem(this.classId)).indexOf(this.lectureId) === -1
+        JSON.parse(localStorage.getItem(this.classId)).isComplete.indexOf(this.lectureId) === -1
           ? false
           : true,
     };

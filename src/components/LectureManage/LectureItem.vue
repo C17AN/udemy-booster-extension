@@ -14,9 +14,13 @@ export default {
     id: Number,
     image: String,
     title: String,
-    progress: Number,
     openModal: Function,
     setSelectedLectureId: Function,
+  },
+  computed: {
+    progress: function() {
+      return JSON.parse(localStorage.getItem(this.id)).progress;
+    },
   },
   methods: {
     handleLectureItemClick() {

@@ -6,7 +6,6 @@
         :key="lecture.id"
         :title="lecture.title"
         :image="lecture.image"
-        :progress="lecture.progress"
         :id="lecture.id"
         :openModal="openModal"
         :setSelectedLectureId="setSelectedLectureId"
@@ -17,19 +16,19 @@
     <p>이런, 아직 강의 목록이 비어있네요!</p>
   </div>
   <Modal :closeModal="closeModal" v-if="isOpened">
-    <LectureCourse :id="selectedLectureId" />
+    <CourseContainer :id="selectedLectureId" />
   </Modal>
 </template>
 
 <script>
 import LectureItem from "../LectureManage/LectureItem.vue";
 import Modal from "../UI/Modal.vue";
-import LectureCourse from "../LectureCurriculum/LectureCourse.vue";
+import CourseContainer from "../LectureCurriculum/CourseContainer.vue";
 
 export default {
   components: {
     LectureItem,
-    LectureCourse,
+    CourseContainer,
     Modal,
   },
 
@@ -48,7 +47,6 @@ export default {
     },
     setSelectedLectureId(id) {
       this.selectedLectureId = id;
-      console.log(this.selectedLectureId);
     },
   },
   computed: {

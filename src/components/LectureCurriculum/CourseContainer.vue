@@ -67,17 +67,23 @@ export default {
       });
     },
     checkLectureComplete(classId, lectureId) {
-      if (this.classCompleteList.indexOf(lectureId) === -1) {
-        this.classCompleteList = [...this.classCompleteList, lectureId];
-        console.log("add ", this.classCompleteList);
-        localStorage.setItem(classId, JSON.stringify([...this.classCompleteList]));
-        // 강의 수강상태 리턴
-        return true;
+      if (this.classCompleteList.isComplete.indexOf(lectureId) === -1) {
+        this.classCompleteList.isComplete = [...this.classCompleteList.isComplete, lectureId];
+        this.classCompleteList.progress = (
+          (this.classCompleteList.isComplete.length / this.lectureList.flat().length) *
+          100
+        ).toFixed(1);
+        localStorage.setItem(classId, JSON.stringify(this.classCompleteList));
       } else {
-        this.classCompleteList.splice(this.classCompleteList.indexOf(lectureId), 1);
-        localStorage.setItem(classId, JSON.stringify([...this.classCompleteList]));
-        // 강의 수강상태 리턴
-        return false;
+        this.classCompleteList.isComplete.splice(
+          this.classCompleteList.isComplete.indexOf(lectureId),
+          1
+        );
+        this.classCompleteList.progress = (
+          (this.classCompleteList.isComplete.length / this.lectureList.flat().length) *
+          100
+        ).toFixed(1);
+        localStorage.setItem(classId, JSON.stringify(this.classCompleteList));
       }
     },
   },
